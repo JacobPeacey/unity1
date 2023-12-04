@@ -37,7 +37,7 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemyWave(waveNumber);
             Instantiate(powerupPrefab, GenerateSpawnPoint(), powerupPrefab.transform.rotation);
         }
-        if(!bossHasBeenSpawned && waveNumber == 56)
+        if(!bossHasBeenSpawned && waveNumber == 5)
         {
             bossHasBeenSpawned = true;
             SpawnedBoss = Instantiate (boss, BossSpawnPoint.transform.position, BossSpawnPoint.transform.rotation);

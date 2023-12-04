@@ -12,7 +12,7 @@ public class NewEnemy : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject bulletSpawnPoint;
     [SerializeField] private float fireElapsedTime = 0;
-                     private Vector3 initalPosition;
+    [SerializeField] private Vector3 initalPosition;
    
 
     //Start
@@ -29,8 +29,7 @@ public class NewEnemy : MonoBehaviour
 	    transform.LookAt(player.transform);
 
 	    //Move the enemy towards the player
-	    transform.position += transform.forward * speed * Time.deltaTime;
-        Debug.Log("text" + fireElapsedTime);
+	   
  
         if (fireElapsedTime > 1)
         { 

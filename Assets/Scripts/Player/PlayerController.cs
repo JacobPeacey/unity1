@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour
     [Header("Powerup variables")]
     [SerializeField] private bool hasPowerup = false;
     [SerializeField] private float powerupStrength = 15.0f;
-    [SerializeField] private float PowerupTime = 7.0f;
+
+    [SerializeField] private float PowerupTime = 10.0f;
 
     [Header("Handling death")]
     [SerializeField] private Text LivesText;
     [SerializeField] private GameObject FailedPanel;
+    [SerializeField] private Text HighScore;
     #region BASIC CONTROLS
 
 
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
     /// This function is used to control what will happen when the player respawns.
     /// Common things to find are resetting values of the player so they dont spawn in moving, or if they have a gun to refill it.
     /// </summary>
-    private void ReSpawn()
+   private void ReSpawn()
     {
         playerRigidbody.velocity = Vector3.zero;
         playerRigidbody.angularVelocity = Vector3.zero;
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour
             Fail();
         }
     }
+
 
 
     #endregion
@@ -133,8 +136,6 @@ public class PlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// When the player dies and has no lives left what should happen?
-    /// </summary>
     private void Fail()
     {
         FailedPanel.SetActive(true);
@@ -142,5 +143,7 @@ public class PlayerController : MonoBehaviour
         // Setting this back to 1 will unpause the engine.
         Time.timeScale = 0f; 
     }
+    /// </summary>
+    
     #endregion
 }
