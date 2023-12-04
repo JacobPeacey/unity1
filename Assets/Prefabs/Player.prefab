@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3816469286576284902}
   - component: {fileID: 3816469286576284901}
   - component: {fileID: 3816469286576284900}
+  - component: {fileID: -6958424414079468702}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -155,3 +156,15 @@ MonoBehaviour:
   PowerupTime: 11
   LivesText: {fileID: 0}
   FailedPanel: {fileID: 0}
+--- !u!114 &-6958424414079468702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816469286576284899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecac93e805febf44895f3014aae043b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
