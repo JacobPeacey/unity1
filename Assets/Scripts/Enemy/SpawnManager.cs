@@ -13,6 +13,9 @@ public class SpawnManager : MonoBehaviour
     [Header("Enemy Objects")]
     [SerializeField] private int enemyCount = 0;
     [SerializeField] List<GameObject> enemyPrefabs;
+    [SerializeField] private GameObject boss;
+    [SerializeField] private GameObject BossSpawnPoint;                
+
 
     [Header("Powerup Objects")]
     [SerializeField] private GameObject powerupPrefab;
@@ -23,6 +26,9 @@ public class SpawnManager : MonoBehaviour
     /// <summary>
     /// Every frame we need to check if we have run out of enemies to kill.
     /// </summary>
+
+    public GameObject SpawnedBoss = new GameObject ();
+    private bool bossHasBeenSpawned = false;
     private void Update()
     {
         if (enemyCount == 0)
@@ -31,6 +37,15 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemyWave(waveNumber);
             Instantiate(powerupPrefab, GenerateSpawnPoint(), powerupPrefab.transform.rotation);
         }
+        if(!bossHasBeenSpawned && waveNumber == 56)
+        {
+            bossHasBeenSpawned = true;
+            SpawnedBoss = Instantiate (boss, BossSpawnPoint.transform.position, BossSpawnPoint.transform.rotation);
+            
+
+        }
+        
+
     }
     
     /// <summary>
