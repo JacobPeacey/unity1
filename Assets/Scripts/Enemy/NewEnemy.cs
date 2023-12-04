@@ -11,7 +11,11 @@ public class NewEnemy : MonoBehaviour
     [SerializeField] private float minDistance = 5f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject bulletSpawnPoint;
-
+    [SerializeField] private float fireElapsedTime = 0;
+   private void ReSpawn()
+    {
+       
+    }
 
     //Start
     void Start()
@@ -27,12 +31,32 @@ public class NewEnemy : MonoBehaviour
 
 	    //Move the enemy towards the player
 	    transform.position += transform.forward * speed * Time.deltaTime;
+        Debug.Log("text" + fireElapsedTime);
 
-	    //Shoot the player if the enemy is far enough away
-	    if(Vector3.Distance(transform.position, player.transform.position) >= minDistance)
+
+        
+        if (fireElapsedTime > 1)
+        { 
+          Shoot();
+          fireElapsedTime = 0;
+          
+
+        }
+         else 
+        {
+            fireElapsedTime = fireElapsedTime + Time.deltaTime; 
+        }
+    }   
+
+    void Shoot ( )
+    {
+        if(Vector3.Distance(transform.position, player.transform.position) >= minDistance)
 	    {
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
             bullet.GetComponent<Rigidbody>().AddForce(transform.forward * 1000);
-	    }
-    }   
+           
+
+        
+	    } 
+    }
 }
