@@ -146,7 +146,5 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     
     #endregion
-}\\private void highscore()
-{
-    Score
 }
+
