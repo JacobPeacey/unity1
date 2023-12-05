@@ -2,6 +2,17 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class GameHandler : MonoBehaviour {
+    private void Start () {
+        HealthSystem healthSystem = new HealthSystem(100);
+        Debug.Log("Health: "+healthSystem.GetHealth());
+        healthSystem.damage(10);
+        Debug.Log("Health: "+healthSystem.GetHealth());
+        healthSystem.Heal(10);
+        Debug.Log("Health: "+healthSystem.GetHealth());
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
     [Header("Player")]
