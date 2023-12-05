@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [Header("Handling death")]
     [SerializeField] private Text LivesText;
     [SerializeField] private GameObject FailedPanel;
-    [SerializeField] private Text HighScore;
+    [SerializeField] private Text Score;
     #region BASIC CONTROLS
 
 
@@ -137,7 +137,7 @@ public class PlayerController : MonoBehaviour
 
     /// <summary>
     private void Fail()
-    {
+    { 
         FailedPanel.SetActive(true);
         // Setting the timescale to 0 will pause the games physics engine, effectivly pausing the game.
         // Setting this back to 1 will unpause the engine.
@@ -146,4 +146,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     
     #endregion
+}\\private void highscore()
+{
+    Score
 }
