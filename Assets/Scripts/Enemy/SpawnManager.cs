@@ -107,4 +107,5 @@ public class SpawnManager : MonoBehaviour
         ScoreText.text = "Score: " + score;
     }
     #endregion
+
 }

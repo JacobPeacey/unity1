@@ -2,17 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameHandler : MonoBehaviour {
-    private void Start () {
-        HealthSystem healthSystem = new HealthSystem(100);
-        Debug.Log("Health: "+healthSystem.GetHealth());
-        healthSystem.damage(10);
-        Debug.Log("Health: "+healthSystem.GetHealth());
-        healthSystem.Heal(10);
-        Debug.Log("Health: "+healthSystem.GetHealth());
-    }
-}
-
 public class PlayerController : MonoBehaviour
 {
     [Header("Player")]
@@ -32,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Text LivesText;
     [SerializeField] private GameObject FailedPanel;
     [SerializeField] private Text Score;
+    [SerializeField] private Text WaveText;
     #region BASIC CONTROLS
 
 
@@ -156,6 +146,13 @@ public class PlayerController : MonoBehaviour
     }
     /// </summary>
     
-    #endregion
+    
 }
+#endregion
+
+    
+
+ 
+
+  
 
