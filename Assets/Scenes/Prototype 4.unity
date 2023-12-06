@@ -828,10 +828,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8dcab368b3b25ba4188591a06d7107f4, type: 3}
-  m_Resource: {fileID: 8300000, guid: 8dcab368b3b25ba4188591a06d7107f4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f2afbeb4fc4d26b439570bfacb589b37, type: 3}
+  m_Resource: {fileID: 8300000, guid: f2afbeb4fc4d26b439570bfacb589b37, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.018
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1849,6 +1849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23564663788724664, guid: 961be46ca9a355943ae3f65c47741bb0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f5599d5d17120464db2c0674944061c4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7020,7 +7024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1886997686383441763, guid: 0abdc856639f1a54e826b8fba21f01d3, type: 3}
       propertyPath: orthographic size
-      value: 19.046038
+      value: 16.24652
       objectReference: {fileID: 0}
     - target: {fileID: 1886997686383441772, guid: 0abdc856639f1a54e826b8fba21f01d3, type: 3}
       propertyPath: m_LocalScale.x
