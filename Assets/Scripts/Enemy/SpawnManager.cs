@@ -8,64 +8,50 @@ public class SpawnManager : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int score = 0;
     [SerializeField] private int waveNumber = 0;
-    [SerializeField, Range(5, 10)] private float spawnRange = 9;
+    [SerializeField, Range(5,10)] private float spawnRange = 9; //Set to 9 to match the size of the platform.
 
     [Header("Enemy Objects")]
     [SerializeField] private int enemyCount = 0;
     [SerializeField] List<GameObject> enemyPrefabs;
     [SerializeField] private GameObject boss;
-    [SerializeField] private GameObject BossSpawnPoint;
+    [SerializeField] private GameObject BossSpawnPoint;                
+
 
     [Header("Powerup Objects")]
     [SerializeField] private GameObject powerupPrefab;
-
+    
     [Header("UI Component")]
     [SerializeField] private Text ScoreText;
+    
+    /// <summary>
+    /// Every frame we need to check if we have run out of enemies to kill.
+    /// </summary>
 
-    public GameObject SpawnedBoss = null;
+    public GameObject SpawnedBoss = new GameObject ();
     private bool bossHasBeenSpawned = false;
-
-    void Start()
-{
-    // If ScoreText is not assigned in the Inspector, try to get it from the GameObject
-    if (ScoreText == null)
-    {
-        ScoreText = GetComponentInChildren<Text>();
-    }
-
-    score = 0;
-    waveNumber = 1; // Set the initial waveNumber to 1
-    UpdateUIScore();
-}
-
-
-    void Update()
+    private void Update()
     {
         if (enemyCount == 0)
         {
             waveNumber++;
-            UpdateWaveText(); // Ensure that UpdateWaveText is called when the wave increases
             SpawnEnemyWave(waveNumber);
             Instantiate(powerupPrefab, GenerateSpawnPoint(), powerupPrefab.transform.rotation);
         }
-
-        if (!bossHasBeenSpawned && waveNumber == 10)
+        if(!bossHasBeenSpawned && waveNumber == 5)
         {
             bossHasBeenSpawned = true;
-            SpawnedBoss = Instantiate(boss, BossSpawnPoint.transform.position, BossSpawnPoint.transform.rotation);
+            SpawnedBoss = Instantiate (boss, BossSpawnPoint.transform.position, BossSpawnPoint.transform.rotation);
+            
+
         }
-    }
+        
 
-    public void UpdateUIScore()
-    {
-        ScoreText.text = "Score: " + score;
     }
-
-    void UpdateWaveText()
-    {
-        ScoreText.text = "Wave: " + waveNumber;
-    }
-
+    
+    /// <summary>
+    /// Here we are randomly picking 2 ints to make our coordinates to spawn an object. This is used to spawn both enemies and powerups.
+    /// </summary>
+    /// <returns></returns>
     public Vector3 GenerateSpawnPoint()
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
@@ -74,25 +60,52 @@ public class SpawnManager : MonoBehaviour
         return randomPos;
     }
 
+    #region Spawn Enemies
+    
+    /// <summary>
+    /// Spawns a number of enemies equal to the wave number we're on. 
+    /// </summary>
+    /// <param name="_enemiesToSpawn"></param>
     private void SpawnEnemyWave(int _enemiesToSpawn)
     {
         for (int i = 0; i < _enemiesToSpawn; i++)
         {
             Instantiate(ChooseRandomEnemy(), GenerateSpawnPoint(), Quaternion.identity);
-            enemyCount++;
+            enemyCount++; //this is a nice short hand for "enemyCount = enemyCount + 1;"
         }
     }
-
+    
+    /// <summary>
+    /// Since we have multiple enemies that we can spawn we're just spawning a random one.
+    /// This is one area that could probably be improved but may seem simpler than it really is.
+    /// </summary>
+    /// <returns></returns>
     private GameObject ChooseRandomEnemy()
     {
-       return enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
-
+        return enemyPrefabs[Random.Range(0, enemyPrefabs.Count-1)];
     }
 
+    /// <summary>
+    /// When an enemy dies we need to update the score and our enemy count so we know how many are left.
+    /// </summary>
     public void EnemyDied()
     {
         enemyCount--;
         score++;
         UpdateUIScore();
     }
+    
+    #endregion
+
+    #region Pickups
+
+    #endregion
+
+    #region UI
+    public void UpdateUIScore()
+    {
+        ScoreText.text = "Score: " + score;
+    }
+    #endregion
+
 }
